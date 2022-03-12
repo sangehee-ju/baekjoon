@@ -1,16 +1,13 @@
-from itertools import combinations
-N, M = input().split(' ')
-N = int(N)
-M = int(M)
-# 입력될 수 들을 담는 리스트 lst
-lst = input().split(' ')
-lst = list(map(int, lst))
-res = list(combinations(lst, 3))
+import itertools
+import sys
+
+N, M = map(int,sys.stdin.readline().split())
+
+nums = list(map(int, sys.stdin.readline().split()))
+combs = itertools.combinations(nums, 3)
 m = 0
-for t in res:
-    total = 0
-    for i in range(len(t)):
-        total += t[i]
-    if (total <= M) & (m < total):
-        m = total
+
+for i in combs:
+    if M >= sum(i) > m:
+        m = sum(i)
 print(m)
