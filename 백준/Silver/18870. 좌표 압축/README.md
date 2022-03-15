@@ -6,6 +6,9 @@
 
 메모리: 144088 KB, 시간: 2096 ms
 
+### 날짜
+2022-03-16
+
 ### 분류
 
 값 / 좌표 압축(coordinate_compression), 정렬(sorting)
@@ -27,4 +30,30 @@
 ### 출력 
 
  <p>첫째 줄에 X'<sub>1</sub>, X'<sub>2</sub>, ..., X'<sub>N</sub>을 공백 한 칸으로 구분해서 출력한다.</p>
+
+### 시간 초과였던 코드
+```
+# 시간초과
+import sys
+
+N = int(sys.stdin.readline())
+nums = list(map(int, sys.stdin.readline().split()))
+freq = []
+
+# 개수 확인을 위해 유일한 원소만 담긴 set 선언
+check = set(nums)
+
+# ==> 비교
+for i in check:
+    cnt = 0
+    for j in check:
+        if i > j:
+            cnt += 1
+    freq.append((i, cnt))
+
+for i in nums:
+    for j in freq:
+        if i == j[0]:
+            print(j[1], end=' ')
+```
 
